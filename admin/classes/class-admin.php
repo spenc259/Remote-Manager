@@ -28,7 +28,7 @@ class ThemePusherAdmin
     {
         add_menu_page(
             'themepusher', // PAGE TITLE
-            'themepusher 1.0', // MENU TITLE
+            'Theme Pusher', // MENU TITLE
             'manage_options', // CAPABILITY
             'themepusher', // MENU SLUG
             // array($this, 'themepusher_settings_view'), // FUNCTION NAME
@@ -138,7 +138,7 @@ class ThemePusherAdmin
             $id = absint( $_REQUEST['id'] );
             $site = new themepusher_CRUD();
             $site = $site->get( $id );
-            // echo '<pre>'; print_r($site); echo '</pre>';
+            echo '<pre>'; print_r($site); echo '</pre>';
             $url = get_post_meta( $id, 'url', true);
         }
         

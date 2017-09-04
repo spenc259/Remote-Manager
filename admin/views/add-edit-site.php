@@ -5,10 +5,15 @@
  */
 
 do_settings_sections('themepusher_options_info');
+
+if (!empty($_POST)) {
+    $message = "Site Saved! :p";
+}
 ?>
 <div class="wrap">
     <form action="" method="post">
         <div class="form-wrap">
+            <?php if (empty($_POST)) : ?>
             <table class="form">
                 <tr class="tr-row">
                     <th class="theading">Name</th>
@@ -28,9 +33,16 @@ do_settings_sections('themepusher_options_info');
                     <input type="hidden" name="ID" data-url="<?php echo ( !empty($_GET['id']) ) ? $_GET['id'] : ''; ?>" value="<?php echo ( !empty($_GET['id']) ) ? $_GET['id'] : ''; ?>" />
                 </tr>
             </table>
+            <?php endif; ?>
             <table class="form">
                 <tr class="tr-row">
+                <?php if (!empty($_POST)) : ?>
+                    <td class="update column-update" data-colname="Update"><?php echo $message; ?></td>                   
+                    <td class="update column-update" data-colname="Update"><a href="<?php echo site_url('/wp-admin/admin.php?page=themepusher'); ?>" class="custombtn no-margin">Back to Site List</a></td>
+                    <td class="update column-update" data-colname="Add New"><a href="<?php echo site_url('/wp-admin/admin.php?page=themepusher&action=add'); ?>" class="custombtn no-margin">Add Another?</a></td>
+                <?php else : ?>
                     <td><?php submit_button( 'Save Site Info' ); ?></td>
+                <?php endif; ?>
                 </tr>
             </table>
         </div>
