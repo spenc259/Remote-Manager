@@ -35,11 +35,19 @@ if (!empty($_POST)) {
             </table>
             <?php endif; ?>
             <table class="form">
-                <tr class="tr-row">
+                
                 <?php if (!empty($_POST)) : ?>
-                    <td class="update column-update" data-colname="Update"><?php echo $message; ?></td>                   
-                    <td class="update column-update" data-colname="Update"><a href="<?php echo site_url('/wp-admin/admin.php?page=themepusher'); ?>" class="custombtn no-margin">Back to Site List</a></td>
-                    <td class="update column-update" data-colname="Add New"><a href="<?php echo site_url('/wp-admin/admin.php?page=themepusher&action=add'); ?>" class="custombtn no-margin">Add Another?</a></td>
+                <tr class="tr-row">
+                    <td class="update column-update" data-colname="Update">
+                        <?php echo $message; ?>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr class="tr-row">
+                    <td class="update column-update" data-colname="Update">
+                        <a href="<?php echo site_url('/wp-admin/admin.php?page=themepusher'); ?>" class="custombtn no-margin">Back to Site List</a>
+                        <a href="<?php echo site_url('/wp-admin/admin.php?page=themepusher&action=add'); ?>" class="custombtn no-margin">Add Another?</a>
+                    </td>
                 <?php else : ?>
                     <td><?php submit_button( 'Save Site Info' ); ?></td>
                 <?php endif; ?>
