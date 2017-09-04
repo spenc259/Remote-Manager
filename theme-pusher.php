@@ -20,7 +20,7 @@ define( 'ABS_FOLDER', dirname( __FILE__ ) );
 
 /**
  * WP Requires
- * @since 1.0
+ * @since 0.1
  */
 require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 
@@ -39,7 +39,7 @@ include_once plugin_dir_path( __FILE__ ) . '/admin/admin.php';
  */
 function theme_pusher_loader()
 {
-    $instance = ThemePusher::instance( __FILE__, '1.0' );
+    $instance = ThemePusher::instance( __FILE__, '0.1' );
 
     return $instance;
 }
