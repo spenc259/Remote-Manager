@@ -1,19 +1,19 @@
 <?php
 
 /**
- * themepusher Admin Class
+ * remotemanager Admin Class
  * @since 0.1
  */
 
-class ThemePusherAdmin
+class RemoteManagerAdmin
 {
 
     private $settings;
 
     function __construct()
     {
-        add_action('admin_menu', array($this, 'themepusher_options_page')); // options page
-        add_action('admin_init', array($this, 'themepusher_admin_settings_init')); // settings
+        add_action('admin_menu', array($this, 'remotemanager_options_page')); // options page
+        add_action('admin_init', array($this, 'remotemanager_admin_settings_init')); // settings
 
         // $this->set_admin_settings();
     }
@@ -24,21 +24,21 @@ class ThemePusherAdmin
      * Add a menu item called theme Settings
      * @since 0.1
      */        
-    function themepusher_options_page()
+    function remotemanager_options_page()
     {
         add_menu_page(
-            'themepusher', // PAGE TITLE
-            'Theme Pusher', // MENU TITLE
+            'remotemanager', // PAGE TITLE
+            'Remote Manager', // MENU TITLE
             'manage_options', // CAPABILITY
-            'themepusher', // MENU SLUG
-            // array($this, 'themepusher_settings_view'), // FUNCTION NAME
+            'remotemanager', // MENU SLUG
+            // array($this, 'remotemanager_settings_view'), // FUNCTION NAME
             array($this, 'load_admin_step'), // FUNCTION NAME
             'dashicons-networking', // ICON URL
             33 // POSITION
         );
 
-        add_submenu_page( 'themepusher', 'Site List', 'Site List', 'manage_options', 'themepusher' );
-        add_submenu_page( 'themepusher', 'Add Site', 'New Site', 'manage_options', 'themepusher&action=add', array($this, 'themepusher_add_site') );
+        add_submenu_page( 'remotemanager', 'Site List', 'Site List', 'manage_options', 'remotemanager' );
+        add_submenu_page( 'remotemanager', 'Add Site', 'New Site', 'manage_options', 'remotemanager&action=add', array($this, 'remotemanager_add_site') );
     }
 
 
@@ -46,33 +46,33 @@ class ThemePusherAdmin
      * register settings that will appear in the options page
      * @since 0.1
      */
-    function themepusher_admin_settings_init()
+    function remotemanager_admin_settings_init()
     {
-        if (false == get_option( 'themepusher_display_options' )) {
-            add_option( 'themepusher_display_options' );
+        if (false == get_option( 'remotemanager_display_options' )) {
+            add_option( 'remotemanager_display_options' );
         }
         add_settings_section(
-            'themepusher_options_info', // ID
+            'remotemanager_options_info', // ID
             'Remote Site Manager', // TITLE
-            array($this, 'themepusher_options_instructions'), // CB
-            'themepusher_options_info' // PAGE
+            array($this, 'remotemanager_options_instructions'), // CB
+            'remotemanager_options_info' // PAGE
         );
         add_settings_section(
-            'themepusher_options', // ID
+            'remotemanager_options', // ID
             '', // TITLE
             '', // CB
-            'themepusher_display_options' // PAGE
+            'remotemanager_display_options' // PAGE
         );
         add_settings_field( 
             'site_list', // ID
             '', // TITLE
             array($this, 'site_list'), // CB
-            'themepusher_display_options', // PAGE
-            'themepusher_options' // SECTION ID
+            'remotemanager_display_options', // PAGE
+            'remotemanager_options' // SECTION ID
         );
         register_setting( 
-            'themepusher_display_options', // OPTION GROUP 
-            'themepusher_display_options',// OPTION NAME
+            'remotemanager_display_options', // OPTION GROUP 
+            'remotemanager_display_options',// OPTION NAME
             array($this, 'sanitize' ) // SANITIZE CB
         );
     }
@@ -96,15 +96,15 @@ class ThemePusherAdmin
         switch ( $this->get_current_action() ) {
             case 'add':
             case 'edit':
-                $this->themepusher_add_edit_site();
+                $this->remotemanager_add_edit_site();
                 break;
             case 'update':
-                $this->themepusher_update_site();
+                $this->remotemanager_update_site();
                 break;
             case 'delete':
-                $this->themepusher_delete();
+                $this->remotemanager_delete();
             default:
-                $this->themepusher_site_list();
+                $this->remotemanager_site_list();
                 break;
         }
     }
@@ -114,10 +114,10 @@ class ThemePusherAdmin
      * load the admin list HTML
      * @since 0.1
      */
-    function themepusher_site_list()
+    function remotemanager_site_list()
     {
         if ( !current_user_can('manage_options') ) return;
-        $auto_check_site_manager = new themepusher_List_Table();
+        $auto_check_site_manager = new remotemanager_List_Table();
         $auto_check_site_manager->prepare_items();
 
         include ABS_FOLDER  . '/admin/views/site-list.php';
@@ -128,7 +128,7 @@ class ThemePusherAdmin
      * load the admin add new form
      * @since 0.1
      */
-    function themepusher_add_edit_site()
+    function remotemanager_add_edit_site()
     {
         if ( !current_user_can('manage_options') ) return;
 
@@ -136,7 +136,7 @@ class ThemePusherAdmin
 
         if ( ! empty( $_REQUEST['id'] ) ) {
             $id = absint( $_REQUEST['id'] );
-            $site = new themepusher_CRUD();
+            $site = new remotemanager_CRUD();
             $site = $site->get( $id );
             echo '<pre>'; print_r($site); echo '</pre>';
             $url = get_post_meta( $id, 'url', true);
@@ -155,11 +155,11 @@ class ThemePusherAdmin
      * load the admin edit form
      * @since 0.1
      */
-    function themepusher_update_site()
+    function remotemanager_update_site()
     {
         if ( ! empty( $_REQUEST['id'] ) ) {
             $id = absint( $_REQUEST['id'] );
-            $site = new themepusher_CRUD();
+            $site = new remotemanager_CRUD();
             $site = $site->get( $id );
             // echo '<pre>'; print_r($site); echo '</pre>';
             $url = get_post_meta( $id, 'url', true);
@@ -174,13 +174,13 @@ class ThemePusherAdmin
      * @since 0.1
      * @return void
      */
-    public function themepusher_options_instructions()
+    public function remotemanager_options_instructions()
     {
         echo '
             Please enter a URL of a site you would like to manage.
             <br /><br />';
             
-        $options = get_option( 'themepusher_display_options' );
+        $options = get_option( 'remotemanager_display_options' );
         //print_r($options);
     }
 
@@ -193,7 +193,7 @@ class ThemePusherAdmin
 	 */
 	public function get_url( $params = array() ) {
 		$url = admin_url( 'admin.php' );
-		$params = array( 'page' => 'themepusher' ) + wp_parse_args( $params );
+		$params = array( 'page' => 'remotemanager' ) + wp_parse_args( $params );
 		return add_query_arg( urlencode_deep( $params ), $url );
 	}
 
@@ -220,7 +220,7 @@ class ThemePusherAdmin
             );
         }
 
-        $crud = new themepusher_CRUD();
+        $crud = new remotemanager_CRUD();
 
         if ( $action == 'edit' ) {
             $crud->update( $data, $site );
@@ -234,7 +234,7 @@ class ThemePusherAdmin
      * Delete a Site
      * @since 0.1
      */
-    function themepusher_delete()
+    function remotemanager_delete()
     {
         if ( empty( $_GET['id'] ) ) return;
 
@@ -244,7 +244,7 @@ class ThemePusherAdmin
             wp_die( 'you can not delete a post', 403 );
         }
 
-        $crud = new themepusher_CRUD();
+        $crud = new remotemanager_CRUD();
         $crud->get( $id );
 
         if ( ! $crud->delete( $id ) ) {

@@ -1,12 +1,12 @@
 jQuery(document).ready(function($) {
-	$('button.base-push-updates').on('click', function(e) {
+	$('a.push-theme').on('click', function(e) {
 		console.log('pushed');
 
 		e.preventDefault();
 
 		var data = {
-			action: 'theme_pusher',
-			noonce: 'theme_pusher',
+			action: 'remote_manager',
+			noonce: 'remote_manager',
 			url: $(this).data('url')
 		};
 

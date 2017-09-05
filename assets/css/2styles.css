@@ -1,0 +1,132 @@
+/* ADMIN UI */
+
+.site-list {
+	background: white;
+	padding: 1rem;
+	max-width: 50%;
+	border: 2px solid lightgrey;
+}
+
+.site-list h2 {
+	margin-top: 0;
+}
+
+.site-list .form-table th {
+	padding: 1rem 0;
+	vertical-align: middle;
+	width: 100px;
+}
+
+.site-list .submit {
+	padding: 0;
+}
+
+.site {
+	width: 100%;
+}
+
+.info {
+	display: table-cell;
+	width: 42%;
+	vertical-align: top;
+}
+
+.info input {
+	width: 90%;
+	padding: 0.7rem 1.3rem;
+	height: auto;
+}
+
+.wp-core-ui .button.base-push-updates {
+	background: #42b72a;
+	color: #fff;
+	box-shadow: 0 1px 0 #38e158;
+	padding: 0.5rem 1.3rem;
+	height: auto;
+}
+
+.wp-core-ui .site-list .button-primary {
+	padding: 0.4rem 2rem;
+	height: auto;
+}
+
+
+
+
+/* Loader */
+
+.active {
+    opacity: 1;
+}
+
+.loader-wrap {
+	background-color: hsla(0, 0%, 0%, 0.6);
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	z-index: 10000;
+    display: none;
+    transition: background-color 0.6s ease-in-out 0s;
+}
+
+.loader {
+  display: inline-flex;
+  height: 30px;
+  width: 160px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.square {
+  border-radius: 0%;
+  background: white;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  
+  animation: move 1.5s infinite ease-in-out;
+  opacity: 0;
+}
+
+.square2 {
+  animation-delay: 0.2s;
+}
+
+.square3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes move {
+    25% {
+		transform:translateX(0px) rotate(0deg) scale(0.5);
+		-webkit-transform:translateX(0px) rotate(0deg) scale(0.5);
+        opacity: 0.5;
+	}
+	50% {
+		transform:translateX(0px) rotate(-0deg);
+		-webkit-transform:translateX(0px) rotate(-0deg);
+        background: rgba(41, 128, 185, 0.4)
+	}
+	50.1% {
+		transform:translateX(0px) rotate(-0deg);
+		-webkit-transform:translateX(0px) rotate(-0deg);
+    
+	}
+	75% {
+		transform:translateX(0px) rotate(-0deg);
+		-webkit-transform:translateX(0px) rotate(-0deg);
+	}
+	100% {
+		/* transform:rotate(-360deg); */
+		/* -webkit-transform:rotate(-360deg); */
+	}
+}

@@ -1,48 +1,119 @@
 /* ADMIN UI */
 
-.site-list {
+.wrap {
+	/* margin: 10px 20px 0 2px;
+	max-width: 1140px;
 	background: white;
-	padding: 1rem;
-	max-width: 50%;
-	border: 2px solid lightgrey;
+	padding: 2rem;
+	text-align: left; */
 }
 
-.site-list h2 {
-	margin-top: 0;
-}
-
-.site-list .form-table th {
-	padding: 1rem 0;
-	vertical-align: middle;
-	width: 100px;
-}
-
-.site-list .submit {
+p.submit {
+	margin: 1rem 0 0;
 	padding: 0;
 }
 
-.site {
+/* Headings */
+
+/* Tabs */
+
+.tab-body {
+	background: white;
+	border: 1px solid lightgrey;
+	border-top: 0px;
+}
+
+.nav-tab-active,
+.nav-tab-active:focus,
+.nav-tab-active:focus:active,
+.nav-tab-active:hover {
+	background: white;
+	border-bottom: 1px solid white;
+}
+
+/* Table */
+
+.form-wrap {
+	background: white;
+	padding: 2rem;
+	border-top: 2px solid lightblue;
+}
+
+.form-table {
+	margin-top: 0;
+}
+
+.form-table tbody > tr > th[scope="row"] {
+	display: none;
+}
+
+table.form {
 	width: 100%;
 }
 
-.info {
-	display: table-cell;
-	width: 42%;
-	vertical-align: top;
+.tr-row {
+	border: 2px solid lightgrey;
+	border-right: 0;
+	border-left: 0;
+	/*background: rgba(211, 211, 211, 0.25);*/
+	border-bottom-color: #e12020;
 }
 
-.info input {
-	width: 90%;
-	padding: 0.7rem 1.3rem;
-	height: auto;
+/* .tr-row td {
+	padding: 0.5rem 1rem;
+} */
+
+.theading {
+	margin: 0;
+	text-align: left;
 }
 
-.wp-core-ui .button.base-push-updates {
+/* th.theading {
+	padding: 1rem 0 0rem 1rem;
+	vertical-align: middle;
+	width: 100px;
+} */
+
+th.theading:first-child {
+	/* width: 10px; */
+}
+
+.input.text input {
+	padding: 0.8rem;
+	width: 100%;
+}
+
+.textarea textarea {
+	width: 100%;
+}
+
+/* Buttons */
+
+a.custombtn {
 	background: #42b72a;
 	color: #fff;
 	box-shadow: 0 1px 0 #38e158;
 	padding: 0.5rem 1.3rem;
 	height: auto;
+	text-decoration: none;
+	margin: 1rem 0rem;
+	max-width: auto;
+	display: inline-block;
+	cursor: pointer;
+}
+
+a.custombtn.secondary {
+	background: #2ab7a3;
+	box-shadow: 0 1px 0 #1f8374;
+	float: right;
+}
+
+a.custombtn.no-margin {
+	margin: 0;
+}
+
+a.custombtn.hidden {
+	display: none;
 }
 
 .wp-core-ui .site-list .button-primary {
@@ -50,13 +121,10 @@
 	height: auto;
 }
 
-
-
-
 /* Loader */
 
 .active {
-    opacity: 1;
+	opacity: 1;
 }
 
 .loader-wrap {
@@ -70,60 +138,59 @@
 	width: 100%;
 	margin: auto;
 	z-index: 10000;
-    display: none;
-    transition: background-color 0.6s ease-in-out 0s;
+	display: none;
+	transition: background-color 0.6s ease-in-out 0s;
 }
 
 .loader {
-  display: inline-flex;
-  height: 30px;
-  width: 160px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+	display: inline-flex;
+	height: 30px;
+	width: 160px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
 }
 
 .square {
-  border-radius: 0%;
-  background: white;
-  width: 20px;
-  height: 20px;
-  margin: auto;
-  
-  animation: move 1.5s infinite ease-in-out;
-  opacity: 0;
+	border-radius: 0%;
+	background: white;
+	width: 20px;
+	height: 20px;
+	margin: auto;
+
+	animation: move 1.5s infinite ease-in-out;
+	opacity: 0;
 }
 
 .square2 {
-  animation-delay: 0.2s;
+	animation-delay: 0.2s;
 }
 
 .square3 {
-  animation-delay: 0.4s;
+	animation-delay: 0.4s;
 }
 
 @keyframes move {
-    25% {
-		transform:translateX(0px) rotate(0deg) scale(0.5);
-		-webkit-transform:translateX(0px) rotate(0deg) scale(0.5);
-        opacity: 0.5;
+	25% {
+		transform: translateX(0px) rotate(0deg) scale(0.5);
+		-webkit-transform: translateX(0px) rotate(0deg) scale(0.5);
+		opacity: 0.5;
 	}
 	50% {
-		transform:translateX(0px) rotate(-0deg);
-		-webkit-transform:translateX(0px) rotate(-0deg);
-        background: rgba(41, 128, 185, 0.4)
+		transform: translateX(0px) rotate(-0deg);
+		-webkit-transform: translateX(0px) rotate(-0deg);
+		background: rgba(41, 128, 185, 0.4);
 	}
 	50.1% {
-		transform:translateX(0px) rotate(-0deg);
-		-webkit-transform:translateX(0px) rotate(-0deg);
-    
+		transform: translateX(0px) rotate(-0deg);
+		-webkit-transform: translateX(0px) rotate(-0deg);
 	}
 	75% {
-		transform:translateX(0px) rotate(-0deg);
-		-webkit-transform:translateX(0px) rotate(-0deg);
+		transform: translateX(0px) rotate(-0deg);
+		-webkit-transform: translateX(0px) rotate(-0deg);
 	}
 	100% {
 		/* transform:rotate(-360deg); */

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: Theme Pusher
+ * Plugin Name: Remote Manager
  * Plugin URI: https://intimation.uk
- * Description: Update a remote theme
+ * Description: Manage a remote sites theme and plugins
  * Version: 0.1
  * Author: Paul Spence - Intimation
  * Author URI: https://intimation.uk
@@ -28,20 +28,22 @@ require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
  * Include Files
  * @since 0.1
  */
-include_once plugin_dir_path( __FILE__ ) . 'classes/class_theme_pusher.php';
+include_once plugin_dir_path( __FILE__ ) . 'classes/class_remote_manager.php';
 include_once plugin_dir_path( __FILE__ ) . '/admin/admin.php';
+include_once plugin_dir_path( __FILE__ ) . 'classes/theme-pusher/class-theme-pusher.php';
+include_once plugin_dir_path( __FILE__ ) . 'classes/plugin-updater/class-plugin-updater.php';
 
 
 /**
  * Load the plugin
  * @since 0.1
- * @return theme_pusher
+ * @return remote_manager
  */
-function theme_pusher_loader()
+function remote_manager_loader()
 {
-    $instance = ThemePusher::instance( __FILE__, '0.1' );
+    $instance = RemoteManager::instance( __FILE__, '0.1' );
 
     return $instance;
 }
 
-theme_pusher_loader();
+remote_manager_loader();

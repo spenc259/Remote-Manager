@@ -1,10 +1,10 @@
 <?php
 /**
- * Theme Pusher CRUD Operations
+ * Remote Manager CRUD Operations
  * @since 0.1
  */
 
-class themepusher_CRUD
+class remotemanager_CRUD
 {
     /**
      * Create a New Site
@@ -20,7 +20,7 @@ class themepusher_CRUD
         $params = wp_parse_args( $params, $defaults );
         $data = array(
             'post_title' => $params['name'],
-            'post_type' => 'sites_themepusher'
+            'post_type' => 'sites_remotemanager'
         );
         $ID = wp_insert_post( $data );
         if ( is_wp_error( $ID ) ) {
@@ -41,8 +41,8 @@ class themepusher_CRUD
     {
         $site = get_post( $id );
 
-        if ( empty($id) || $site->post_type !== 'sites_themepusher' ) {
-            return new WP_Error( 'themepusher_invalid_id', __( 'Not a Valid Site', 'themepusher' ), array( 'status' => 404 ) );
+        if ( empty($id) || $site->post_type !== 'sites_remotemanager' ) {
+            return new WP_Error( 'remotemanager_invalid_id', __( 'Not a Valid Site', 'remotemanager' ), array( 'status' => 404 ) );
         }
         
         return $site;
@@ -57,7 +57,7 @@ class themepusher_CRUD
         $postarr = array(
             'ID'         => $data['ID'],
             'post_title' => $data['name'],
-            'post_type'  => 'sites_themepusher'
+            'post_type'  => 'sites_remotemanager'
         );
         $meta = $data['meta'];
         foreach ($meta as $key => $value) {

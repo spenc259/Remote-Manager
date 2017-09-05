@@ -4,7 +4,7 @@
  * @since 0.1
  */
 
-do_settings_sections('themepusher_options_info');
+do_settings_sections('remotemanager_options_info');
 
 if (!empty($_POST)) {
     $message = "Site Saved! :p";
@@ -45,8 +45,8 @@ if (!empty($_POST)) {
                 </tr>
                 <tr class="tr-row">
                     <td class="update column-update" data-colname="Update">
-                        <a href="<?php echo site_url('/wp-admin/admin.php?page=themepusher'); ?>" class="custombtn no-margin">Back to Site List</a>
-                        <a href="<?php echo site_url('/wp-admin/admin.php?page=themepusher&action=add'); ?>" class="custombtn no-margin">Add Another?</a>
+                        <a href="<?php echo site_url('/wp-admin/admin.php?page=remotemanager'); ?>" class="custombtn no-margin">Back to Site List</a>
+                        <a href="<?php echo site_url('/wp-admin/admin.php?page=remotemanager&action=add'); ?>" class="custombtn no-margin">Add Another?</a>
                     </td>
                 <?php else : ?>
                     <td><?php submit_button( 'Save Site Info' ); ?></td>

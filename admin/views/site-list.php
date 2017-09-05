@@ -1,6 +1,6 @@
 <?php
 /**
- * themepusher Settings Admin Options Page
+ * remotemanager Settings Admin Options Page
  * @since 0.1
  */
 ?>
@@ -8,11 +8,11 @@
 
     <h2>
         <?php
-        esc_html_e( 'Site List', 'themepusher' );
+        esc_html_e( 'Site List', 'remotemanager' );
 
         if ( current_user_can( 'create_users' ) ): ?>
             <a href="<?php echo esc_url( self::get_url( 'action=add' ) ) ?>"
-                class="add-new-h2"><?php echo esc_html_x( 'Add New', 'site', 'themepusher' ); ?></a>
+                class="add-new-h2"><?php echo esc_html_x( 'Add New', 'site', 'remotemanager' ); ?></a>
         <?php
         endif;
         ?>
@@ -21,7 +21,7 @@
     <p>Select a site to manage</p>
 
     <form action="options.php" method="get">
-        <?php $auto_check_site_manager->search_box( __( 'Search Sites', 'themepusher' ), 'themepusher' ); ?>
+        <?php $auto_check_site_manager->search_box( __( 'Search Sites', 'remotemanager' ), 'remotemanager' ); ?>
         <?php $auto_check_site_manager->display(); ?>
     </form>
 

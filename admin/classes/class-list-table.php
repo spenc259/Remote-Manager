@@ -4,7 +4,7 @@
  * A Table to list the sites to manage remote updates for in the admin area
  * @since 0.1
  */
-class themepusher_List_Table extends WP_List_Table
+class remotemanager_List_Table extends WP_List_Table
 {
     public $items;
 
@@ -25,7 +25,7 @@ class themepusher_List_Table extends WP_List_Table
     {
         $paged = $this->get_pagenum();
 		$args = array(
-			'post_type' => 'sites_themepusher',
+			'post_type' => 'sites_remotemanager',
 			'post_status' => 'any',
 			'meta_query' => array(
 				array(
@@ -71,7 +71,8 @@ class themepusher_List_Table extends WP_List_Table
             'cb'          => '<input type="checkbox" />',
             'name' => __( 'Name' ),
             'site_url' => __( 'Site URL' ),
-			'update' => __( 'Update' )
+			'plugins' => __( 'Plugins' ),
+			'theme' => __( 'Theme' )
         );
     }
 
@@ -100,11 +101,11 @@ class themepusher_List_Table extends WP_List_Table
 	protected function column_name( $item ) {
 		$title = get_the_title( $item->ID );
 		if ( empty( $title ) ) {
-			$title = '<em>' . esc_html__( 'Untitled', 'themepusher' ) . '</em>';
+			$title = '<em>' . esc_html__( 'Untitled', 'remotemanager' ) . '</em>';
 		}
 		$edit_link = add_query_arg(
 			array(
-				'page'   => 'themepusher',
+				'page'   => 'remotemanager',
 				'action' => 'edit',
 				'id'     => $item->ID,
 			),
@@ -112,7 +113,7 @@ class themepusher_List_Table extends WP_List_Table
 		);
 		$delete_link = add_query_arg(
 			array(
-				'page'   => 'themepusher',
+				'page'   => 'remotemanager',
 				'action' => 'delete',
 				'id'     => $item->ID,
 			),
@@ -120,8 +121,8 @@ class themepusher_List_Table extends WP_List_Table
 		);
 		$delete_link = wp_nonce_url( $delete_link, 'rest-oauth1-delete:' . $item->ID );
 		$actions = array(
-			'edit' => sprintf( '<a href="%s">%s</a>', esc_url( $edit_link ), esc_html__( 'Edit', 'themepusher' ) ),
-			'delete' => sprintf( '<a href="%s">%s</a>', esc_url( $delete_link ), esc_html__( 'Delete', 'themepusher' ) ),
+			'edit' => sprintf( '<a href="%s">%s</a>', esc_url( $edit_link ), esc_html__( 'Edit', 'remotemanager' ) ),
+			'delete' => sprintf( '<a href="%s">%s</a>', esc_url( $delete_link ), esc_html__( 'Delete', 'remotemanager' ) ),
 		);
 		$action_html = $this->row_actions( $actions );
 		return $title . ' ' . $action_html;
@@ -138,20 +139,32 @@ class themepusher_List_Table extends WP_List_Table
 	}
 
 	/**
-	 * Collumn update callback
+	 * Collumn plugins callback
      * @since 0.1
 	 * @param obj $item
 	 * @return string
 	 */
-	function column_update( $item ) {
-		$update_link = add_query_arg(
+	function column_plugins( $item ) {
+		$plugins_link = add_query_arg(
 			array(
-				'page'   => 'themepusher',
+				'page'   => 'remotemanager',
 				'action' => 'update',
 				'id'     => $item->ID,
 			),
 			admin_url( 'admin.php' )
 		);
-		return sprintf( '<a href="%s" class="%s">%s</a>', esc_url( $update_link ), 'custombtn no-margin', esc_html__( 'Update', 'themepusher' ) );
+		return sprintf( '<a href="%s" class="%s">%s</a>', esc_url( $plugins_link ), 'custombtn no-margin', esc_html__( 'Manage', 'remotemanager' ) );
+	}
+	
+	/**
+	 * Collumn theme callback
+	 * @since 0.1
+	 * @param obj $item
+	 * @return string
+	 */
+	function column_theme( $item ) {
+		$theme_link = get_post_meta( $item->ID, 'url', true );
+		// return sprintf( '<a href="%s" class="%s">%s</a>', esc_url( $theme_link ), 'push-theme custombtn no-margin', esc_html__( 'Push', 'remotemanager' ) );
+		return sprintf( '<a class="%s" data-url="%s">%s</a>', 'push-theme custombtn no-margin', $theme_link, esc_html__( 'Push', 'remotemanager' ) );
 	}
 }

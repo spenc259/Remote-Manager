@@ -4,7 +4,7 @@
  * @since 0.1
  */
 
-do_settings_sections('themepusher_options_info');
+do_settings_sections('remotemanager_options_info');
 ?>
 <div class="wrap">
     <form action="options.php" method="post">
@@ -15,7 +15,7 @@ do_settings_sections('themepusher_options_info');
             <tr class="tr-row">
                 <td>
                     <div class="input text url">
-                        <input type="text" name="themepusher_display_options[site_url]" data-url="<?php echo ( !empty($url) ) ? $url : ''; ?>" value="<?php echo ( !empty($url) ) ? $url : ''; ?>" />
+                        <input type="text" name="remotemanager_display_options[site_url]" data-url="<?php echo ( !empty($url) ) ? $url : ''; ?>" value="<?php echo ( !empty($url) ) ? $url : ''; ?>" />
                     </div>
                 </td>
             </tr>
@@ -24,18 +24,18 @@ do_settings_sections('themepusher_options_info');
         <table class="form">
             <tr class="tr-row">
                 <td>
-                    <a href="<?php echo esc_url( $this->get_url( 'action=updates' ) ); ?>" class="themepusher custombtn get_updates">
-                        <?php echo esc_html_x( 'Check for Updates', 'application', 'rest_themepusher1' ); ?>
+                    <a href="<?php echo esc_url( $this->get_url( 'action=updates' ) ); ?>" class="remotemanager custombtn get_updates base-push-updates">
+                        <?php echo esc_html_x( 'Check for Updates', 'application', 'rest_remotemanager1' ); ?>
                     </a>
                 </td>
                 <td>
-                    <a href="<?php echo esc_url( $this->get_url( 'action=updates' ) ); ?>" class="themepusher custombtn secondary single_update">
-                        <?php echo esc_html_x( 'Update Selected', 'application', 'rest_themepusher1' ); ?>
+                    <a href="<?php echo esc_url( $this->get_url( 'action=updates' ) ); ?>" class="remotemanager custombtn secondary single_update">
+                        <?php echo esc_html_x( 'Update Selected', 'application', 'rest_remotemanager1' ); ?>
                     </a>
                 </td>
                 <!-- <td>
-                    <a href="<?php echo esc_url( $this->get_url( 'action=updates' ) ); ?>" class="themepusher custombtn secondary bulk_update">
-                        <?php echo esc_html_x( 'Update All', 'application', 'rest_themepusher1' ); ?>
+                    <a href="<?php echo esc_url( $this->get_url( 'action=updates' ) ); ?>" class="remotemanager custombtn secondary bulk_update">
+                        <?php echo esc_html_x( 'Update All', 'application', 'rest_remotemanager1' ); ?>
                     </a>
                 </td> -->
             </tr>
