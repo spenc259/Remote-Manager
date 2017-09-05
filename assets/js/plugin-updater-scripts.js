@@ -45,6 +45,9 @@ jQuery(document).ready(function($) {
 
 		$('.loader-wrap').show();
 		var request = $.post(plugin_updater.ajaxurl, data, function(response) {
+			console.log("request running");
+			console.log(data);
+			console.log(response);
 			check_response(response, action);
 		});
 
@@ -63,7 +66,14 @@ jQuery(document).ready(function($) {
 	}
 
 	function check_response(response, action) {
+		// console.log("check response running");
+		// console.log(response);
+		// console.log(action);
 		$('.plugin-list tbody tr.plugin').remove();
+		if (response.data.length == 0) {
+			$('.plugin-list').html('<tr class="tr-row plugin"><td>You need to have our Remote Site Listener installed and active </td></tr>');
+			return;
+		}
 		if (action == 'get_updates') {
 			if (response.data.plugins.length == 0) {
 				$('.plugin-list').html('<tr class="tr-row plugin"><td>Plugins are up to date &#x1F43C; </td></tr>');
@@ -80,6 +90,8 @@ jQuery(document).ready(function($) {
 	}
 
 	function template(response) {
+		console.log("template running");
+		console.log(response);
 		$('.plugin-list').html(
 			'<tr class="tr-row"><th class="theading"></th><th class="theading">Name</th><th class="theading">Current Version</th><th class="theading">New Version</th><th class="theading">WP Version tested</th></tr>'
 		);
