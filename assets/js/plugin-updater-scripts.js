@@ -44,7 +44,7 @@ jQuery(document).ready(function($) {
 		console.log('TEST');
 
 		$('.loader-wrap').show();
-		var request = $.post(zip_theme.ajaxurl, data, function(response) {
+		var request = $.post(plugin_updater.ajaxurl, data, function(response) {
 			check_response(response, action);
 		});
 
