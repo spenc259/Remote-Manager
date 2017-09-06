@@ -5,8 +5,8 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 
 		var data = {
-			action: 'remote_manager',
-			noonce: 'remote_manager',
+			action: 'theme_pusher',
+			noonce: 'theme_pusher',
 			url: $(this).data('url')
 		};
 
@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
 			// Log a message to the console
 			console.log('Hooray, it worked!');
 			$('.loader-wrap').hide();
-			button.text('Push Updates');
+			button.text('Push');
 		});
 
 		// Callback handler that will be called on failure

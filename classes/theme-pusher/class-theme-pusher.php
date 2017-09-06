@@ -44,7 +44,11 @@ class ThemePusher
     {  
         $data = array();
         $folder = get_stylesheet_directory(); // '/var/www/vhosts/icl1.co.uk/httpdocs/wp-content/themes/base';
-        $dest = 'base';
+        // $dest = 'base';
+
+        preg_match("/\w*.\z/", $folder, $output);
+        
+        $dest = $output[0];
 
         // create a zip of the theme files
         $zip = new ZipArchive;
