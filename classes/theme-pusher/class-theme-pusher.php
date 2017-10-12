@@ -43,8 +43,10 @@ class ThemePusher
     public function theme_pusher()
     {  
         $data = array();
-        $folder = get_stylesheet_directory(); // '/var/www/vhosts/icl1.co.uk/httpdocs/wp-content/themes/base';
-        $dest = 'base';
+
+        $gettheme = wp_get_theme();
+        $folder = get_stylesheet_directory();        
+        $dest = $gettheme->get('TextDomain');
 
         // create a zip of the theme files
         $zip = new ZipArchive;
@@ -56,7 +58,7 @@ class ThemePusher
 
         $zip -> close();
 
-        $outputLink = site_url( '/wp-content/themes/base.zip' );
+        $outputLink = site_url( '/wp-content/themes/' . $dest . '.zip' );
         $args = array(
             'headers' => array(),
             'body' => array(
@@ -72,6 +74,7 @@ class ThemePusher
         $data['open'] = $open;
         $data['url'] = $url;
         $data['folder'] = $folder;
+        $data['textdomain'] = $dest;
         $data['request'] = $request;
 
         wp_send_json_success( $data );

@@ -5,8 +5,8 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 
 		var data = {
-			action: 'remote_manager',
-			noonce: 'remote_manager',
+			action: 'theme_pusher',
+			noonce: 'theme_pusher',
 			url: $(this).data('url')
 		};
 
