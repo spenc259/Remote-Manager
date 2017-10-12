@@ -10,33 +10,12 @@ class PluginUpdater
 
     public function __construct()
     {
-        // add_action( 'admin_enqueue_scripts', array($this, 'load_scripts') );
-        // add_action( 'init', array( $this, 'pluginupdater_post_type') );
-
         add_action( 'wp_ajax_nopriv_get_updates', array($this, 'get_updates') );
         add_action( 'wp_ajax_get_updates', array($this, 'get_updates') );
-
         add_action( 'wp_ajax_nopriv_bulk_update', array($this, 'bulk_update') );
         add_action( 'wp_ajax_bulk_update', array($this, 'bulk_update') );
-
         add_action( 'wp_ajax_nopriv_single_update', array($this, 'single_update') );
         add_action( 'wp_ajax_single_update', array($this, 'single_update') );
-
-    }
-
-    /**
-     * Instance loader
-     * @since 0.1
-     * @param string $file current file
-     * @param string $version current version number
-     * @return object $instance singleton instance of the class
-     */
-    public static function instance( $file, $version )
-    {
-        if ( is_null(self::$instance) ) {
-            self::$instance = new self( $file, $version );
-        }
-        return self::$instance;
     }
 
     /**
@@ -68,11 +47,9 @@ class PluginUpdater
     public function auto_check($action)
     {  
         $data = array();
-        if ( isset( $_POST['additional'] ) ) {
-            $additional = $_POST['additional'];
-        } else {
-            $additional = "";
-        }
+        
+        ( isset( $_POST['additional'] ) ) ? $additional = $_POST['additional'] : $additional = "";
+
         $args = array(
             'headers' => array(),
             'body' => array(
