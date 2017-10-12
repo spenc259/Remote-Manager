@@ -4,7 +4,7 @@
  * Plugin Name: Remote Manager
  * Plugin URI: https://intimation.uk
  * Description: Manage a remote sites theme and plugins
- * Version: 0.1
+ * Version: 0.2
  * Author: Paul Spence - Intimation
  * Author URI: https://intimation.uk
  * Licence: GPL

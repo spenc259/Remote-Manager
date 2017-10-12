@@ -37,7 +37,7 @@ class ThemePusher
      * Theme Pusher
      * Zip up a given theme folder and make a HTTP POST request
      * to a remote satellite site
-     * @since 0.1
+     * @since 0.2
      * @return void - exits on completion
      */
     public function theme_pusher()
